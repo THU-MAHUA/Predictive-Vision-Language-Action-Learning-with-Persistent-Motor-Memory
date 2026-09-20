@@ -8,7 +8,7 @@ memory. The policy predicts a 50-action chunk, executes the first 10 actions, an
 the visual and robot-state changes caused by that initial horizon, and carries the resulting
 memory tokens into the next decision window.
 
-![IPME-VLA framework](assets/ipme_vla_simplified_architecture.svg)
+![IPME-VLA framework](assets/vla.png)
 
 ## Innovations
 
