@@ -1,0 +1,12 @@
+IPME-VLA
+Copyright 2026 Mahua
+
+This product includes software developed by the Hugging Face team and
+contributors to the LeRobot project. Adapted components include the
+vision-language backbone/action-expert integration, attention utilities,
+image preprocessing, and normalization behavior. Those components are
+used under the Apache License 2.0 and retain their source-file notices.
+
+The IPME-VLA predictive consequence model, recurrent training procedure,
+and persistent motor-memory mechanism are original project components.
+

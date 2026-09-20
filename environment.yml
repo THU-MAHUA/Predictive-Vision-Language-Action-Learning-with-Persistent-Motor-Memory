@@ -1,0 +1,10 @@
+name: ipme-vla
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+      - -r requirements.txt
+      - -e .
+      - pytest==8.3.5

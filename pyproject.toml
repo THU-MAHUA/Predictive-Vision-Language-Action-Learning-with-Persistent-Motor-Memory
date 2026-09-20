@@ -1,0 +1,64 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ipme-vla"
+version = "0.1.0"
+description = "Predictive Vision-Language-Action Learning with Persistent Motor Memory"
+readme = "README.md"
+requires-python = ">=3.10,<3.13"
+license = { file = "LICENSE" }
+authors = [{ name = "Mahua" }]
+keywords = ["robotics", "vision-language-action", "imitation-learning", "flow-matching"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "License :: OSI Approved :: Apache Software License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+  "accelerate==1.7.0",
+  "av==14.2.0",
+  "huggingface-hub==0.27.1",
+  "numpy==1.26.4",
+  "pandas==2.2.3",
+  "peft==0.14.0",
+  "Pillow==11.1.0",
+  "pyarrow==19.0.0",
+  "PyYAML==6.0.2",
+  "safetensors==0.5.3",
+  "torch==2.6.0",
+  "torchvision==0.21.0",
+  "transformers==4.50.3",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest==8.3.5",
+  "ruff==0.11.13",
+]
+
+[project.scripts]
+ipme-vla-train = "ipme_vla.training.cli:main"
+ipme-vla-evaluate = "ipme_vla.evaluation.cli:main"
+ipme-vla-infer = "ipme_vla.inference.cli:main"
+
+[project.urls]
+Repository = "https://github.com/THU-MAHUA/Predictive-Vision-Language-Action-Learning-with-Persistent-Motor-Memory"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"

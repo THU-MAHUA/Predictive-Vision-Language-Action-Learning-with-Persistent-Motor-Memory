@@ -1,0 +1,13 @@
+accelerate==1.7.0
+av==14.2.0
+huggingface-hub==0.27.1
+numpy==1.26.4
+pandas==2.2.3
+peft==0.14.0
+Pillow==11.1.0
+pyarrow==19.0.0
+PyYAML==6.0.2
+safetensors==0.5.3
+torch==2.6.0
+torchvision==0.21.0
+transformers==4.50.3

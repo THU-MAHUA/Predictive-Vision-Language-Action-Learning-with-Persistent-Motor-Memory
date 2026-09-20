@@ -1,0 +1,59 @@
+model:
+  chunk_size: 50
+  n_action_steps: 10
+  predictive_horizon: 10
+  recurrent_unroll_steps: 4
+  num_memory_tokens: 4
+  num_consequence_tokens: 4
+  visual_consequence_weight: 0.1
+  state_consequence_weight: 0.1
+  enable_visual_consequence: true
+  enable_state_consequence: true
+  enable_recurrent_training: true
+  max_state_dim: 32
+  max_action_dim: 32
+  resize_imgs_with_padding: [512, 512]
+  tokenizer_max_length: 48
+  num_steps: 10
+  vlm_model_name: HuggingFaceTB/SmolVLM2-500M-Video-Instruct
+  load_vlm_weights: false
+  freeze_vision_encoder: true
+  train_expert_only: false
+  train_state_proj: true
+  attention_mode: cross_attn
+  num_vlm_layers: 16
+  num_expert_layers: -1
+  expert_width_multiplier: 0.75
+  state_to_prefix: false
+  use_cache: false
+  peft_method: ""
+  peft_target_model: ""
+
+data:
+  dataset_root: null
+  train_episodes: null
+  validation_fraction: 0.05
+  video_backend: pyav
+
+training:
+  output_dir: outputs/ipme_vla
+  seed: 1000
+  device: cuda
+  batch_size: 8
+  num_workers: 4
+  steps: 100000
+  learning_rate: 2.5e-5
+  vlm_learning_rate: 0.0
+  weight_decay: 1.0e-10
+  betas: [0.9, 0.95]
+  epsilon: 1.0e-8
+  grad_clip_norm: 10.0
+  warmup_steps: 1000
+  decay_steps: 30000
+  decay_learning_rate: 2.5e-6
+  mixed_precision: false
+  log_every: 100
+  validate_every: 2000
+  save_every: 2000
+  max_validation_batches: 100
+
