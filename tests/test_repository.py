@@ -1,7 +1,6 @@
 import re
+import xml.etree.ElementTree as ET
 from pathlib import Path
-
-from PIL import Image
 
 
 ROOT = Path(__file__).parents[1]
@@ -11,15 +10,13 @@ def test_readme_assets_and_relative_paths() -> None:
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     assert "https://huggingface.co/blog/smolvla" in readme
     assert "/home/" not in readme
-    for relative in (
-        "assets/ipme_vla_paper_workflow.png",
-        "assets/ipme_vla_paper_workflow.svg",
-        "assets/ipme_vla_paper_workflow.pdf",
-    ):
-        assert (ROOT / relative).is_file()
-    with Image.open(ROOT / "assets/ipme_vla_paper_workflow.png") as image:
-        assert image.width > 1000 and image.height > 500
-        image.verify()
+    figure = ROOT / "assets/ipme_vla_simplified_architecture.svg"
+    assert figure.is_file()
+    svg = ET.parse(figure).getroot()
+    assert svg.attrib["viewBox"] == "0 0 1600 900"
+    assert "assets/ipme_vla_simplified_architecture.svg" in readme
+    assert "ipme_vla_paper_workflow" not in readme
+    assert "Paper-ready versions" not in readme
     local_links = re.findall(r"\[[^\]]+\]\((?!https?://)([^)#]+)", readme)
     assert all((ROOT / link).exists() for link in local_links)
 
